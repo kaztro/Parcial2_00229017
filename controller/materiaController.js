@@ -15,7 +15,7 @@ materiaController.getAll = function (req, res) {
                 status: 200,
                 success: true,
             })
-            res.json(materias);
+             return res.json(materias);
         }
     });
 };
@@ -33,7 +33,7 @@ materiaController.getOne = function (req, res) {
                 status: 200,
                 success: true,
             })
-            res.json(materia);
+             return res.json(materia);
         }
     });
 };
@@ -55,7 +55,7 @@ materiaController.store = function (req, res) {
                 status: 200,
                 success: true,
             })
-            res.json(data);
+             return res.json(data);
         }
     });
 };
@@ -87,7 +87,7 @@ materiaController.delete = function (req, res) {
                 status: 200,
                 success: true,
             })
-            res.json(oldData);
+             return res.json(oldData);
         }
     });
 };
