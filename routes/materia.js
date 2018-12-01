@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var materiaController = import('../controller/materiaController');
+var materiaController = require('../controller/materiaController');
 
 router.get('/', materiaController.getAll);
 router.get('/:id', materiaController.getOne);

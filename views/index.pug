@@ -2,4 +2,15 @@ extends layout
 
 block content
   h1= title
-  h1 #{title}
+  form(action="/api/Curso_Online", method="post", name='formaction')
+    input(type="text" placeholder='Campo1')
+    input(type="text" placeholder='Campo2')
+    input(type="text" placeholder='Campo3')
+    input(type="submit" value='Guardar')
+  table 
+    th #
+    th Materia
+    th UV
+    th Descripcion
+    th Opciones
+    tbody.materias

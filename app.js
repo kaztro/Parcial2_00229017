@@ -4,19 +4,18 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var cursoROuter = require('./routes/materia');
+var materiaRouter = require('./routes/materia');
 
-mongoose.connect('mongodb://localhost:27017/cursoOnline', function(err, res) {  
+mongoose.connect('mongodb://localhost:27017/cursoOnline', { useNewUrlParser: true } , function(err, res) {  
   if(err) {
     console.log('ERROR: connecting to Database. ' + err);
+  } else {
+    console.log("Coneccion establecida :'v");
   }
-  app.listen(3000, function() {
-    console.log("Coneccion Establecida...!");
-  });
 });
 
 var app = express();
@@ -33,7 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/api/Curso_Online', cursoROuter);
+app.use('/api/Curso_Online', materiaRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

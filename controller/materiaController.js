@@ -1,6 +1,7 @@
 var express = require('express');
+passport = require('passport');
 var materiaController = {};
-var materiaModel = import('../models/Materia');
+var materiaModel = require('../models/Materia');
 
 materiaController.getAll = function (req, res) {
     materiaModel.find({}, function(err, materias) {
@@ -43,7 +44,7 @@ materiaController.store = function (req, res) {
         uv: req.body.value,
         descripcion: req.body.value
     };
-    materiaModel.create(data, function(err, data) {
+    materiaModel.create(materia, function(err, data) {
         if (err) {
             res.json({
                 status: 400,
@@ -57,7 +58,7 @@ materiaController.store = function (req, res) {
             })
              return res.json(data);
         }
-    });
+    }).save();
 };
 /*
 materiaController.update = function (req, res) {
