@@ -6,13 +6,13 @@ materiaController.getAll = function (req, res) {
     materiaModel.find({}, function(err, materias) {
         if (err) {
             res.json({
-                code: 500,
+                status: 500,
                 success: false,
                 err
             });
         } else {
             res.json({
-                code: 200,
+                status: 200,
                 success: true,
             })
             res.json(materias);
@@ -24,13 +24,13 @@ materiaController.getOne = function (req, res) {
     materiaModel.find({ _id: req.params.id }, function(err, materia) {
         if (err) {
             res.json({
-                code: 500,
+                status: 500,
                 success: false,
                 err
             });
         } else {
             res.json({
-                code: 200,
+                status: 200,
                 success: true,
             })
             res.json(materia);
@@ -38,9 +38,28 @@ materiaController.getOne = function (req, res) {
     });
 };
 materiaController.store = function (req, res) {
-    console.log('random.text');
+    data = {
+        materia: req.body.value,
+        uv: req.body.value,
+        descripcion: req.body.value
+    };
+    materiaModel.create(data, function(err, data) {
+        if (err) {
+            res.json({
+                status: 400,
+                success: false,
+                err
+            });
+        } else {
+            res.json({
+                status: 200,
+                success: true,
+            })
+            res.json(data);
+        }
+    });
 };
-
+/*
 materiaController.update = function (req, res) {
     materiaModel.findByIdAndUpdate({ _id: req.params.id }, function(err, materia) {
         if (err) {
@@ -57,6 +76,6 @@ materiaController.update = function (req, res) {
 
 materiaController.delete = function (req, res) {
     console.log('random.text');
-};
+};*/
 
 module.exports = materiaController;
