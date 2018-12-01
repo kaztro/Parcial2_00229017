@@ -44,7 +44,7 @@ materiaController.store = function (req, res) {
         uv: req.body.value,
         descripcion: req.body.value
     };
-    materiaModel.create(materia, function(err, data) {
+    materiaModel.create(data, function(err, data) {
         if (err) {
             res.json({
                 status: 400,
