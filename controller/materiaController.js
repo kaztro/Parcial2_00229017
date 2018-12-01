@@ -73,9 +73,23 @@ materiaController.update = function (req, res) {
         }
     });
 };
-
+*/
 materiaController.delete = function (req, res) {
-    console.log('random.text');
-};*/
+    materiaModel.findByIdAndRemove({_id: req.params.id}, function(err, oldData) {
+        if (err) {
+            res.json({
+                status: 400,
+                success: false,
+                err
+            });
+        } else {
+            res.json({
+                status: 200,
+                success: true,
+            })
+            res.json(oldData);
+        }
+    });
+};
 
 module.exports = materiaController;
