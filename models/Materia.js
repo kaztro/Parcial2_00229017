@@ -6,6 +6,4 @@ var materiaSchema = new mongoose.Schema({
     descripcion: {type: String, required: true}
 });
 
-var Materia = mongoose.model('Materia', materiaSchema);
-
-module.exports = Materia;
+module.exports = mongoose.model('Materia', materiaSchema);
